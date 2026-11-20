@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: cementflow-server
+  datasource:
+    url: ${CEMENTFLOW_DB_URL}
+    username: ${CEMENTFLOW_DB_USER}
+    password: ${CEMENTFLOW_DB_PASSWORD}
+
+server:
+  address: 127.0.0.1
