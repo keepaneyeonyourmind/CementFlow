@@ -1,5 +1,6 @@
 package com.example.cementflow.orders
 
+import com.example.cementflow.BuildConfig
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -15,8 +16,8 @@ data class DemoOrder(
     val status: String, val driverName: String?,
 )
 
-/** Клиент локального сервера только для учебного показа на эмуляторе Android. */
-class DemoApi(private val baseUrl: String = "http://10.0.2.2:8080") {
+/** Клиент локального учебного сервера. */
+class DemoApi(private val baseUrl: String = BuildConfig.DEMO_API_URL) {
     fun products(): List<DemoProduct> = JSONArray(request("GET", "/api/products")).let { array ->
         (0 until array.length()).map { index ->
             val json = array.getJSONObject(index)
@@ -76,7 +77,7 @@ class DemoApi(private val baseUrl: String = "http://10.0.2.2:8080") {
         } catch (e: ApiException) {
             throw e
         } catch (e: IOException) {
-            throw ApiException("Нет связи с сервером. Проверьте, что сервер запущен и доступен эмулятору.", e, uncertain = true)
+            throw ApiException("Нет связи с учебным сервером. Проверьте запуск сервера и подключение устройства.", e, uncertain = true)
         } finally {
             connection.disconnect()
         }

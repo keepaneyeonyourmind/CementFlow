@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+val useUsbServer = providers.gradleProperty("cementflowUsb").orNull == "true"
+
 android {
     namespace = "com.example.cementflow"
     compileSdk {
@@ -17,9 +19,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "DEMO_API_URL", "\"http://10.0.2.2:8080\"")
     }
 
     buildTypes {
+        debug {
+            if (useUsbServer) {
+                buildConfigField("String", "DEMO_API_URL", "\"http://127.0.0.1:8080\"")
+            }
+        }
         release {
             optimization {
                 enable = true
@@ -32,6 +40,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
