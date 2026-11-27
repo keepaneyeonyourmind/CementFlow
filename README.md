@@ -2,11 +2,13 @@
   <img src="docs/branding/cementflow-icon.webp" width="112" alt="Иконка CementFlow">
 </p>
 
-<h1 align="center">CementFlow</h1>
+<h1 align="center">Клинкер (CementFlow)</h1>
 
 <p align="center">
   Учебное Android-приложение для оценки стоимости бетона, заказа цемента и отслеживания доставки.
 </p>
+
+Проект получил название «Клинкер»; в текущей установленной версии приложения пока отображается CementFlow. Состояние домашнего стенда и следующие шаги описаны в [передаче работы](HANDOFF.md).
 
 <p align="center">
   <a href="#возможности">Возможности</a> ·
@@ -52,8 +54,8 @@
 Понадобятся Git, Android Studio с Android SDK 37 и Platform-Tools, JDK 25 для сервера и локальная PostgreSQL. Для установки на устройство требуется Android 7.0 (API 24) или новее.
 
 ```bash
-git clone https://github.com/keepaneyeonyourmind/CementFlow.git
-cd CementFlow
+git clone https://github.com/keepaneyeonyourmind/Klinker.git
+cd Klinker
 ```
 
 Для заказов и доставки создайте учебную базу, загрузите схему и каталог, затем запустите сервер на порту 8080. Команды и переменные окружения приведены в [инструкции сервера](server/README.md). Сервер слушает только локальный адрес. [Описание API](server/API.md).
